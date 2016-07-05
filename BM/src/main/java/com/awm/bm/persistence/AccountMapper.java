@@ -26,8 +26,8 @@ public interface AccountMapper {
 	 * 
 	 * @param account
 	 */
-	@Insert("insert into account values(#{id})")
-	public int addAccount(@Param("id") Account account);
+	@Insert("insert into account values(id,#{account.name},#{account.password},#{account.phone},#{account.id_card},#{account.level},#{account.state},#{account.store})")
+	public int addAccount(@Param("account") Account account);
 
 	/**
 	 * 根据id和密码查询用户 验证登录
@@ -59,16 +59,6 @@ public interface AccountMapper {
 	public int modifyUserById(@Param("account") Account account);
 
 	/**
-	 * 根据id修改员工的状态
-	 * 
-	 * @param id
-	 * @param state
-	 * @return
-	 */
-	@Update("update account set state=#{state} where id=#{id}")
-	public int modifyUserStateById(@Param("id") Integer id, @Param("state") Integer state);
-
-	/**
 	 * 查询业务员的信息
 	 * 
 	 * @return
@@ -92,23 +82,5 @@ public interface AccountMapper {
 	 */
 	@Select("select * from account where id=#{id}")
 	public Account findUsersById(@Param("id") Integer id);
-
-	/**
-	 * 根据条件查询业务员的信息
-	 * 
-	 * @param account
-	 * @return
-	 */
-	@SelectProvider(type = AccountProvider.class, method = "findUser")
-	public List<Account> findUserByCondition(@Param("account") Account account);
-
-	/**
-	 * 根据条件查询员工的信息
-	 * 
-	 * @param account
-	 * @return
-	 */
-	@SelectProvider(type = AccountProvider.class, method = "findUsers")
-	public List<Account> findUsersByCondition(@Param("account") Account account);
 
 }

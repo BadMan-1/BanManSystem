@@ -33,17 +33,6 @@ public class HouseService {
 	}
 
 	/**
-	 * 修改房源状态
-	 * 
-	 * @param id
-	 * @param state
-	 * @return
-	 */
-	public int modifyAvailabilityState(Integer id, Integer state) {
-		return availabilitymapper.modifyAvailabilityState(id, state);
-	}
-	
-	/**
 	 * 通过id查找房源
 	 * 
 	 * @param id
