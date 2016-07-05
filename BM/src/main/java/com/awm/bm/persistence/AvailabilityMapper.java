@@ -2,7 +2,7 @@ package com.awm.bm.persistence;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -21,7 +21,7 @@ public interface AvailabilityMapper {
 	 * @param availability
 	 * @return
 	 */
-	@InsertProvider(type = AvailabilityProvider.class, method = "addAvailability")
+	@Insert("insert into availability values(id,#{availability.landlord}),#{availability.salesman}),#{availability.store}),#{availability.city_area}),#{availability.plot}),#{availability.adress}),#{availability.floor}),#{availability.house_type}),#{availability.acreage}),#{availability.fitment}),#{availability.price}),#{availability.facility}),#{availability.state}),#{availability.time}),#{availability.remark})")
 	public int addAvailability(@Param("availability") Availability availability);
 
 	/**
@@ -33,16 +33,6 @@ public interface AvailabilityMapper {
 	 */
 	@UpdateProvider(type = AvailabilityProvider.class, method = "modifyAvailability")
 	public int modifyAvailability(@Param("availability") Availability availability);
-
-	/**
-	 * 修改房源状态
-	 * 
-	 * @param id
-	 * @param state
-	 * @return
-	 */
-	@Update("update availability set state=#{state} where id=#{id}")
-	public int modifyAvailabilityState(@Param("id") Integer id, @Param("state") Integer state);
 
 	/**
 	 * 通过id查找房源

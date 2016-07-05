@@ -65,17 +65,6 @@ public class AccountService {
 	}
 
 	/**
-	 * 根据id修改员工的状态
-	 * 
-	 * @param id
-	 * @param state
-	 * @return
-	 */
-	public int modifyUserState(Integer id, Integer state) {
-		return accountMapper.modifyUserStateById(id, state);
-	}
-
-	/**
 	 * 查询所有业务员的信息
 	 * 
 	 * @return
@@ -102,25 +91,12 @@ public class AccountService {
 	public Account findUsersById(Integer id) {
 		return accountMapper.findUsersById(id);
 	};
-	
+
 	/**
 	 * 根据条件查询业务员的信息
 	 * 
 	 * @param account
 	 * @return
 	 */
-	public List<Account> findUserByCondition(Account account){
-		return accountMapper.findUserByCondition(account);
-	};
-
-	/**
-	 * 根据条件查询员工的信息
-	 * 
-	 * @param account
-	 * @return
-	 */
-	public List<Account> findUsersByCondition(Account account){
-		return accountMapper.findUsersByCondition(account);
-	};
 
 }
